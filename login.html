@@ -1,0 +1,176 @@
+<!DOCTYPE html> 
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGDMusic - Inscription</title>
+    <link rel="stylesheet">
+    <style>
+        /* Style pour la barre de navigation latérale */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 100%;
+            background-color: #202020;
+            padding-top: 20px;
+        }
+
+        /* Style des liens de navigation */
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 20px 0;
+        }
+
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: block;
+            font-family: Arial, sans-serif;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #400000;
+        }
+
+        body {
+            margin: 0;
+            background-color: #200000;
+            color: white;
+            font-family: 'Lucida Sans', sans-serif;
+            display: flex;
+        }
+
+        /* Contenu principal */
+        .content {
+            margin-left: 320px; /* Décalage pour éviter la barre latérale */
+            padding: 20px;
+            width: calc(100% - 320px);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 350%;
+            margin-top: 50px;
+        }
+
+        p {
+            font-size: 150%;
+            margin-bottom: 30px;
+        }
+
+        /* Formulaire d'inscription */
+        .form-container {
+            background: white;
+            color: black;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            margin: auto;
+        }
+
+        .form-container h2 {
+            font-size: 200%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #202020;
+            color: white;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 10px 0;
+            font-size: small;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre latérale -->
+    <div class="sidebar">
+        <img src="P:\Documents\Code\html\logoCGBB.png" alt="CGDMusic Logo" width="100" class="image-deplacee">
+        <nav>
+            <ul>
+                <li><a href="E:/Code/html/CGDMusic/home.html">Accueil</a></li>
+                <li><a href="E:/Code/html/CGDMusic/about.html">À propos</a></li>
+                <li><a href="E:/Code/html/CGDMusic/compétence.html">Compétence</a></li>
+                <li><a href="E:/Code/html/CGDMusic/services.html">Services</a></li>
+                <li><a href="E:/Code/html/CGDMusic/contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="content">
+        <h1>Bienvenue sur CGDMusic</h1>
+        <p>Inscrivez-vous pour profiter de tous nos services !</p>
+
+        <!-- Formulaire d'inscription -->
+        <div class="form-container">
+            <h2>Inscription</h2>
+            <form action="traitement.php" method="POST">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+
+                <label for="confirm_password">Confirmer le mot de passe :</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+
+                <button type="submit">S'inscrire</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© Copyright 2025 CGDMusic</p>
+    </footer>
+
+</body>
+</html>
