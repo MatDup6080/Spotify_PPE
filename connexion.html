@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="styles.css" rel="stylesheet">
+    <title>Connexion | CGB Music</title>
+</head>
+
+<body>
+
+    <!DOCTYPE html>
+<html>
+<head>
+    <title>Inscription</title>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="index.html" class="btn-home">Retour vers l'accueil</a>
+    </div>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form id="signupForm" method="post" action="signup.php">
+               
+                <h1>Crée un compte</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <span>ou utilisez votre email pour vous inscrire :</span>
+                <input type="text" name="name_u" placeholder="Nom" required>
+                <input type="text" name="surname" placeholder="Prénom" required>
+                <input type="email" id="mail" name="mail" placeholder="Email : example@mail.com" required>
+                <div id="email-error" style="color: red; display: none;"></div>
+                <input type="password" id="signup-password" name="mdp" placeholder="Mot de passe" required>
+                <div id="password-error" style="color: red; display: none;"></div>
+                <input type="checkbox" onclick="togglePassword('signup-password')"> Afficher le mot de passe
+                <button type="submit">Inscription</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form method="post" action="login.php" >
+               
+                <h1>Connexion</h1>
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
+                </div>
+                <span>utilisez email et mot de passe pour vous inscrire :</span>
+                <input type="email" name="mail" placeholder="Email : example@mail.com" required>
+                <input type="password" name="mdp" placeholder="Mot de passe" id="login-password" required>
+                <input type="checkbox" onclick="togglePassword('login-password')"> Afficher le mot de passe
+                <a href="#">Mot de passe oublié ?</a>
+                <button type="submit">Connexion</button>
+                <div id="password-error" style="display:none; color:red; margin-top: 10px;"></div>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Vous souhaitez vous connectez ?</h1>
+                    <p>Connectez vous avec vos identifiant !</p>
+                    <button class="hidden" id="login">Connexion</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Vous souhaitez crée un compte ?</h1>
+                    <p>Venez vous identifiez !</p>
+                    <button class="hidden" id="register">Incription</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+    <script>
+        function togglePassword(id) {
+            var x = document.getElementById(id);
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,544 @@
+/* Importation de la police futuriste */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/*style pour l'habillage du site*/
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #04115a, #21659c);
+    background-repeat: repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 0;
+    padding: 5%;
+    color: white;
+}
+
+
+
+/* Style du titre futuriste */
+h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    font-size: 150px;
+    font-weight: bold;
+    font-family: 'Orbitron', sans-serif;
+    color:#ddb70e;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px cyan, 0 0 20px blue, 0 0 40px cyan;
+    position: relative;
+    animation: neon-glow 1.5s infinite alternate, moveText 3s infinite alternate ease-in-out;
+}
+
+/* Effet de lumière pulsante */
+@keyframes neon-glow {
+    0% { text-shadow: 0 0 5px rgb(255, 238, 0), 0 0 10px blue; }
+    50% { text-shadow: 0 0 20px rgb(229, 255, 0), 0 0 40px blue; }
+    100% { text-shadow: 0 0 5px rgb(255, 238, 0), 0 0 10px blue; }
+}
+
+/* Effet de mouvement lent */
+@keyframes moveText {
+    0% { transform: translateX(-10px); }
+    50% { transform: translateX(10px); }
+    100% { transform: translateX(-10px); }
+}
+
+.vertical-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80px; /* Largeur par défaut du menu */
+    height: 100vh;
+    background: linear-gradient(#73b6a5, #29b48d); 
+    border-radius: 15p
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.vertical-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px; /* Espacement entre les icônes */
+}
+
+.vertical-menu ul li {
+    text-align: center;
+    position: relative; /* Nécessaire pour positionner le texte */
+}
+
+.vertical-menu ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    transition: color 0.3s ease;
+}
+
+.vertical-menu ul li a img {
+    width: 40px; /* Taille des icônes */
+    height: 40px;
+    margin-bottom: 5px;
+    filter: brightness(0) invert(1); /* Rend les icônes blanches */
+    transition: transform 0.3s ease;
+}
+
+.vertical-menu ul li a span {
+    position: absolute;
+    left: 100%; /* Positionne le texte à droite de l'icône */
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap; /* Empêche le texte de se couper */
+    opacity: 0; /* Masque le texte par défaut */
+    pointer-events: none; /* Empêche les interactions avec le texte */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.vertical-menu ul li a:hover span {
+    opacity: 1; /* Affiche le texte au survol */
+    transform: translateY(-50%) translateX(10px); /* Décale légèrement le texte */
+}
+
+.vertical-menu ul li a:hover img {
+    transform: scale(1.1); /* Zoom sur l'icône au survol */
+}
+
+.vertical-menu.collapsed ul li a span {
+    opacity: 0; /* Masque le texte */
+    width: 0; /* Réduit la largeur à 0 */
+    overflow: hidden; /* Cache le texte */
+    white-space: nowrap; /* Empêche le texte de se couper */
+}
+
+.vertical-menu.collapsed ul li a {
+    pointer-events: auto; /* Assure que les interactions utilisateur sont activées */
+    cursor: pointer; /* Affiche le curseur en mode "main" pour indiquer que c'est cliquable */
+}
+
+.vertical-menu.collapsed ul li a img {
+    opacity: 1; /* Assure que les icônes restent visibles et actives */
+    transition: opacity 0.3s ease;
+}
+
+.vertical-menu.collapsed ul li a:hover img {
+    opacity: 0.5; /* Empêche tout effet de survol sur les icônes */
+}
+
+.toggle-btn {
+    position: absolute;
+    top: 10px;
+    right: -15px;
+    background-color: #064938;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 50%;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.menu.collapsed .toggle-btn {
+    transform: rotate(180deg); /* Rotation de la flèche */
+}
+
+main {
+    margin-left: 250px; /* Décalage par défaut */
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.menu.collapsed + main {
+    margin-left: 80px; /* Décalage réduit */
+}
+
+/* Effet d’overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+/* Images de couverture */
+.cover {
+    width: 35%;
+    height: 10%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* Style des titres et paragraphes */
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    text-align: center;
+    color: rgb(32, 160, 118);
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+/* Lecteur audio */
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Options du menu contextuel */
+.menu-options {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    z-index: 10;
+}
+
+.menu-options a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.menu-options a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Icônes de like/dislike */
+.like-dislike-icons {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.like-dislike-icons i {
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.like-dislike-icons span {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+/* Icône de lecture */
+.play-icon {
+    font-size: 30px;
+    color: green;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Transition et effet de zoom pour les icônes du menu */
+.menu img, .nav-menu img {
+    width: 50%;
+    transition: transform 0.3s ease;
+}
+
+.menu img:hover, .nav-menu img:hover {
+    transform: scale(1.1); /* Zoom au survol */
+}
+
+/*style pour les cartes des musiques*/
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 50px;
+    padding: 20px;
+    background-color: transparent;
+}
+.card {
+    background: linear-gradient(135deg, #116466, #1c4d40);
+    width:100%; /* Largeur fixe */
+    height: 100%; /* Hauteur fixe */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: center;
+    padding: 15px;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+    width: 40%;
+    height: auto;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+/* Titre et texte */
+.card h2 {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.card p {
+    margin: 5px 0;
+    color: #1b0000;
+}
+
+/* Boutons */
+.card button, .card select {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #385e37;
+    color: rgb(198, 206, 113);
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.card button:hover {
+    background-color: #278b6a;
+}
+
+.card select {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+
+/* Style pour le lecteur de musique */
+/* Style pour le lecteur de musique */
+.player {
+    position: fixed;
+    bottom: 0;
+    left: 100px; /* Laisse de l'espace pour le menu */
+    width: calc(100% - 100px); /* Réduit la largeur pour éviter le chevauchement */
+    background: linear-gradient( #73b6a5, #29b48d);
+    color: white;
+    border-radius: 15px;
+    text-align: center;
+    padding: 10px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0px -4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Contrôles du lecteur */
+.player-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Espacement entre les boutons */
+    margin: 0; /* Supprime les marges */
+}
+
+.player-controls button  {
+    background: #adaba6;
+    border: none;
+    color: white;
+    padding: 8px 12px; /* Ajuste la taille des boutons */
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Réduction de la taille de la police */
+    transition:  0.3s, transform 0.2s;
+
+}
+
+.player-controls button:hover{
+    background: #2ea88a;
+    transform: scale(1.1);
+}
+
+
+        .add-music-container { 
+            margin: 0; /* Supprime les marges */
+            padding: 0; /* Supprime les paddings */
+            display: flex;
+            align-items: center; /* Centre verticalement */
+            justify-content: center; /* Centre horizontalement */
+            height: 100%; /* Assure que le conteneur prend toute la hauteur */
+        }
+
+        .add-music-btn {
+            padding: 10px; /* Ajuste l'espacement interne */
+            background: #064938;
+            border: none;
+            color: white;
+            border-radius: 50%; /* Rend le bouton circulaire */
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition:  0.3s, transform 0.2s;
+            box-shadow: none; /* Supprime les ombres */
+        }
+        
+        .add-music-btn:hover {
+            background: #0faa83;
+            transform: scale(1.1); /* Ajoute un léger zoom au survol */
+        }
+
+/*style pour le formulaire d'ajout d'une musique dans la biblothéque*/
+.form-container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            background: rgb(45, 88, 138);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        .form-container input, .form-container button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        .form-container button {
+            background: rgb(36, 92, 194);
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition:  0.3s;
+        }
+        .form-container button:hover {
+            background: rgb(33, 99, 173);
+        }
+
+        /* Style pour le moteur de recherche */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+}
+
+.search-container input {
+    width: 200px;
+    padding: 10px;
+    margin:0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.search-container input:focus {
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.search-container input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.search-container select {
+    padding: 10px;
+    font-size: 16px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 100px; /* Laisse de l'espace pour le menu */
+    width: calc(100% - 100px); /* Réduit la largeur pour éviter le chevauchement */
+    background: linear-gradient( #73b6a5, #29b48d);
+    border-radius: 15px;
+    padding: 5px 15px;
+    z-index: 1000;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    gap: 20%;
+}
+.add-music-container {
+    margin: 0; /* Supprime les marges */
+    padding: 0; /* Supprime les paddings */
+}
+
+
+.profile-container {
+    max-width: 800px;
+    height: auto; /* Ajuste automatiquement la hauteur en fonction du contenu */
+    min-height: 400px; 
+    margin: 50px auto;
+    padding: 30px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #256957;
+    font-family: Arial, sans-serif;
+}
+
+.profile-container h2 {
+    text-align: center;
+    font-size: 30px; /* Augmente la taille de la police */
+    margin-bottom: 20px;
+    color: #f1e6e6;
+}
+
+.profile-container p {
+    margin: 40px 0;
+    font-size: 20px;
+    color: #f3eaea;
+}
+
+.profile-container p strong {
+    color: #000;
+}
+
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

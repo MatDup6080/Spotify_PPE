@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #04115a, #21659c);
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: #1a699e;
+    border-radius: 10px;
+    padding: 15px;
+    width: 25%;
+    text-align: center;
+    box-shadow: 0 4px 10px rgb(138, 192, 253);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+}
+
+.delete-icon {
+    cursor: pointer;
+    font-size: 20px;
+    color: red;
+    font-weight: bold;
+}
+
+.delete-icon:hover {
+    color: darkred;
+}
+
+
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    background-color: skyblue;
+    color: white;
+    padding-top: 60px;
+    transition: left 0.3s ease-in-out;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu ul li {
+    padding: 15px;
+    text-align: center;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+}
+
+
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.overlay.show {
+    display: block;
+}
+
+
+
+.cover {
+    width: 100%;
+    height: 180px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+
+h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+p {
+    font-size: 14px;
+    color: #bbb;
+}
+
+
+audio {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.menu-options {
+    display: none;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    z-index: 10;
+}
+.menu-options a {
+    display: block;
+    padding: 10px;
+    color: black;
+    text-decoration: none;
+}
+.menu-options a:hover {
+    background-color: #f0f0f0;
+}
+
+.like-dislike-icons {
+    margin-top: 10px;
+    font-size: 20px;
+}
+.like-dislike-icons i {
+    cursor: pointer;
+    margin: 0 10px;
+}
+.like-dislike-icons span {
+    margin-left: 5px;
+    font-size: 16px;
+}
+.play-icon {
+    font-size: 30px;
+    color: green;
+    cursor: pointer;
+    margin-top: 10px;
+}
+

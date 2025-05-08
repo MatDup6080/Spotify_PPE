@@ -1,0 +1,8 @@
+Site web spotify:
+
+ si non connecté et free:
+ - l'utlisateur ne peut pas rajouter de musique dans une playlist.
+ - il peut écouter seulement 10 musiques, une fois les 15 musiques écoutées un message "Veuillez vous abonner pour écouter plus de musique ou ajouter dans une playlist".
+
+si connecté et non free: 
+-utlisateur peut accéder totalement au site sans limite
