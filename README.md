@@ -13,6 +13,8 @@ connexion.html: cette page permet soit de créer un nouveau compte (login.php) o
 
 formulaire_abonnement: permet à l'utilisateur de changer son type d'abonnement.
 
+Profil.php: Permet de voir les informations de l'utilisateur connecté.
+
 logout.php: permet de se déconnecter.
 
 styles_home.css + scripts_site.js: style pour le site.
