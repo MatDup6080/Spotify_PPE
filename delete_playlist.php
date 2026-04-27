@@ -1,11 +1,6 @@
 <?php
 header('Content-Type: application/json');
-
-$conn = new mysqli("localhost", "root", "", "MusicDB");
-if ($conn->connect_error) {
-    echo json_encode(["success" => false, "message" => "Erreur de connexion à la base de données."]);
-    exit;
-}
+require_once 'config2.php';
 
 $id = $_POST['id'] ?? '';
 if (empty($id)) {
@@ -13,7 +8,10 @@ if (empty($id)) {
     exit;
 }
 
-// Supprimer la playlist
+// Supprimer d'abord les liens avec les musiques
+$conn->query("DELETE FROM playlist_songs WHERE id_p = $id");
+
+// Puis supprimer la playlist
 $query = $conn->prepare("DELETE FROM playlists WHERE id = ?");
 $query->bind_param("i", $id);
 if ($query->execute()) {

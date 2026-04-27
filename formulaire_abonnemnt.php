@@ -7,51 +7,7 @@
     <title>Choisissez votre abonnement</title>
     <link rel="stylesheet" href="styles_home.css">
 </head>
-<nav class="vertical-menu">
-        
-        <ul>
-            <li>
-                <a href="connexion.html" class="menu1">
-                    <img src="images/connexion.png" alt="Page de connexion de CGDMusic">
-                    <span>Connexion</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="profil.php" class="menu1">
-                    <img src="images/profil.png" alt="Page de connexion de CGDMusic">
-                    <span>Profil</span>
-                </a>
-            <li>
-                <a href="index.html" class="menu2">
-                    <img src="images/accueil.png" alt="Page d'accueil de CGDMusic">
-                    <span>Bibliothéque Musique</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="rechercher_musique.php" class="menu2">
-                    <img src="images/musique.png" alt="Page d'accueil de CGDMusic">
-                    <span>Bibliothéque Musique</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="playlist.php" class="menu3">
-                    <img src="images/playlist.png" alt="Page de playlists de CGDMusic">
-                    <span>Playlists</span>
-                </a>
-                
-            </li>
-            
-            <li>
-                <a href="logout.php" class="menu5">
-                    <img src="images/se-deconnecter.png" alt="Déconnexion">
-                    <span>Déconnexion</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<?php include 'menu.php'; ?>
 <body>
     <h2>Choisissez votre abonnement</h2>
     <div class="form-container">

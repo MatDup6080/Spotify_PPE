@@ -1,28 +1,30 @@
 <?php
-// Connexion à la base de données
-$conn = new mysqli("localhost", "root", "", "MusicDB");
-if ($conn->connect_error) {
-    die("Erreur de connexion : " . $conn->connect_error);
-}
+session_start();
+require_once 'config2.php';
 
-// Créer une playlist pour chaque utilisateur s'ils n'en ont pas déjà une
-$resultUsers = $conn->query("SELECT id, surname FROM users");
-if ($resultUsers->num_rows > 0) {
-    while ($user = $resultUsers->fetch_assoc()) {
-        $userId = $user['id'];
-        $userSurname = $user['surname'];
+// Création automatique de la playlist SEULEMENT pour l'utilisateur connecté
+if (isset($_SESSION['utilisateur_id'])) {
+    $userId = $_SESSION['utilisateur_id'];
+    $userSurname = '';
 
-        // Vérifier si l'utilisateur a déjà une playlist
-        $resultPlaylist = $conn->query("SELECT id FROM playlists WHERE id_u = $userId");
-        if ($resultPlaylist->num_rows === 0) {
-            // Créer une nouvelle playlist pour l'utilisateur
-            $playlistName = "Playlist de " . $userSurname;
-            $stmt = $conn->prepare("INSERT INTO playlists (name_p, id_u, cover) VALUES (?, ?, ?)");
-            $defaultCover = "default-cover.jpg";
-            $stmt->bind_param("sis", $playlistName, $userId, $defaultCover);
-            $stmt->execute();
-            $stmt->close();
-        }
+    // Récupérer le nom de l'utilisateur
+    $stmt = $conn->prepare("SELECT surname FROM users WHERE id = ?");
+    $stmt->bind_param("i", $userId);
+    $stmt->execute();
+    $stmt->bind_result($userSurname);
+    $stmt->fetch();
+    $stmt->close();
+
+    // Vérifier si l'utilisateur a déjà une playlist
+    $resultPlaylist = $conn->query("SELECT id FROM playlists WHERE id_u = $userId");
+    if ($resultPlaylist->num_rows === 0) {
+        // Créer une nouvelle playlist pour l'utilisateur
+        $playlistName = "Playlist de " . $userSurname;
+        $stmt = $conn->prepare("INSERT INTO playlists (name_p, id_u, cover) VALUES (?, ?, ?)");
+        $defaultCover = "default-cover.jpg";
+        $stmt->bind_param("sis", $playlistName, $userId, $defaultCover);
+        $stmt->execute();
+        $stmt->close();
     }
 }
 
@@ -101,64 +103,19 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Playlists</title>
-    <link rel="stylesheet" href="styles_home.css">
+    <link rel="stylesheet" href="playlist.css">
+    
 </head>
 <body>
 
-<nav class="vertical-menu">
-        
-        <ul>
-            <li>
-                <a href="connexion.html" class="menu1">
-                    <img src="images/connexion.png" alt="Page de connexion de CGDMusic">
-                    <span>Connexion</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="profil.php" class="menu1">
-                    <img src="images/profil.png" alt="Page de connexion de CGDMusic">
-                    <span>Profil</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="index.html" class="menu2">
-                    <img src="images/accueil.png" alt="Page d'accueil de CGDMusic">
-                    <span>Accueil</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="rechercher_musique.php" class="menu2">
-                    <img src="images/musique.png" alt="Page d'accueil de CGDMusic">
-                    <span>Bibliothéque Musique</span>
-                </a>
-                
-            </li>
-            
-            <li>
-                <a href="formulaire_abonnemnt.php" class="menu4">
-                    <img src="images/paiement-securise.png" alt="Page de téléchargement de CGDMusic">
-                    <span>Abonnement</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="logout.php" class="menu5">
-                    <img src="images/se-deconnecter.png" alt="Déconnexion">
-                    <span>Déconnexion</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<?php include 'menu.php'; ?>
 
 <h2><?= htmlspecialchars($playlistName) ?></h2>
 <div class="container">
     
     <?php if (!empty($musicTracks)): ?>
         <?php foreach ($musicTracks as $index => $track): ?>
-            <div class="card">
+            <div class="card-horizontal">
                 <?php if (isset($_GET['id']) && is_numeric($_GET['id'])): ?>
                     <!-- Affichage des musiques d'une playlist -->
                     <h2><?= htmlspecialchars($track['title']) ?></h2>
@@ -168,7 +125,7 @@ $conn->close();
                     <img src="<?= htmlspecialchars($track['cover']) ?>" alt="Cover de la musique">
                     
                     <!-- Bouton Play -->
-                    <button onclick="playMusic('<?= htmlspecialchars($track['audio']) ?>', '<?= htmlspecialchars($track['title']) ?>', <?= $index ?>)">▶️ Play</button>
+                    <button onclick="playMusic('<?= htmlspecialchars($track['audio']) ?>', '<?= htmlspecialchars($track['title']) ?>', <?= $index ?>)">▶️</button>
                     <!-- Bouton de suppression -->
         <button class="delete-song-btn" onclick="deleteSongFromPlaylist(<?= htmlspecialchars($track['id']) ?>, <?= $playlistId ?>)">🗑️ Supprimer</button>
                     <!-- Boutons Like/Dislike -->
@@ -182,12 +139,11 @@ $conn->close();
             </div>
                 <?php else: ?>
                     <!-- Affichage des playlists -->
-                    <h2><?= htmlspecialchars($track['playlist_name']) ?></h2>
-                    
-                    <a href="playlist.php?id=<?= $track['id'] ?>" class="playlist-link">Voir la playlist</a>
-                    
-                    <!-- Bouton de suppression -->
-                    <button class="delete-playlist-btn" onclick="deletePlaylist(<?= $track['id'] ?>)">🗑️ Supprimer</button>
+                  <div class="card-horizontal" id="playlist-card-<?= $track['id'] ?>">
+    <h2><?= htmlspecialchars($track['playlist_name']) ?></h2>
+    <a href="playlist.php?id=<?= $track['id'] ?>" class="playlist-link">Voir la playlist</a>
+    <button class="delete-playlist-btn" onclick="deletePlaylist(<?= $track['id'] ?>)">🗑️ Supprimer</button>
+</div>
                 <?php endif; ?>
             </div>
         <?php endforeach; ?>
@@ -204,6 +160,7 @@ $conn->close();
             <source id="audioSource" src="" type="audio/mp3">
             Votre navigateur ne supporte pas l'audio.
         </audio>
+        
         <div class="player-controls">
             <button onclick="playPreviousTrack()">⏮️</button>
             <button onclick="playNextTrack()">⏭️</button>
@@ -216,7 +173,7 @@ $conn->close();
     const userAbonnement = "<?php echo $abonnement; ?>";
     const utilisateurId = "<?php echo $utilisateurId; ?>";
 </script>
-<script src="scripts_site.js"></script>
+<script src="playlist.js"></script>
 
 </body>
 </html>

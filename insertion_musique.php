@@ -1,9 +1,7 @@
 <?php
 // Connexion à la base de données
-$conn = new mysqli("localhost", "root", "", "MusicDB");
-if ($conn->connect_error) {
-    die("Erreur de connexion : " . $conn->connect_error);
-}
+require_once 'config.php';
+
 
 // Vérification que le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] === "POST") {

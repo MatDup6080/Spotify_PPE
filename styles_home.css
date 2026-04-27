@@ -3,8 +3,8 @@
 
 /*style pour l'habillage du site*/
 body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #04115a, #21659c);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000000, #000000);
     background-repeat: repeat;
     background-size: cover;
     background-position: center;
@@ -22,7 +22,7 @@ h1 {
     align-items: center;
     height: 100vh;
     text-align: center;
-    font-size: 150px;
+    font-size: 3rem;
     font-weight: bold;
     font-family: 'Orbitron', sans-serif;
     color:#ddb70e;
@@ -50,15 +50,16 @@ h1 {
     position: fixed;
     top: 0;
     left: 0;
-    width: 80px; /* Largeur par défaut du menu */
+    width: 5rem; 
     height: 100vh;
-    background: linear-gradient(#73b6a5, #29b48d); 
-    border-radius: 15p
+    background: linear-gradient(#2563eb, #1e40af); 
+    border-radius: 0.9375rem; 
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    padding: 1.25rem 0; 
+    box-shadow: 0.25rem 0 0.625rem rgba(0, 0, 0, 0.5); 
+    z-index: 1000;
 }
 
 .vertical-menu ul {
@@ -68,7 +69,7 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 100px; /* Espacement entre les icônes */
+    gap: 2.5rem; /* Espacement entre les icônes */
 }
 
 .vertical-menu ul li {
@@ -83,14 +84,14 @@ h1 {
     text-decoration: none;
     color: white;
     font-family: 'Orbitron', sans-serif;
-    font-size: 12px;
+    font-size: 0.8rem;
     transition: color 0.3s ease;
 }
 
 .vertical-menu ul li a img {
-    width: 40px; /* Taille des icônes */
-    height: 40px;
-    margin-bottom: 5px;
+    width: 2.5rem; /* Taille des icônes */
+    height: 2.5rem;
+    margin-bottom:0.5rem ;
     filter: brightness(0) invert(1); /* Rend les icônes blanches */
     transition: transform 0.3s ease;
 }
@@ -108,6 +109,7 @@ h1 {
     opacity: 0; /* Masque le texte par défaut */
     pointer-events: none; /* Empêche les interactions avec le texte */
     transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 1100
 }
 
 .vertical-menu ul li a:hover span {
@@ -269,76 +271,111 @@ audio {
 }
 
 /*style pour les cartes des musiques*/
+/* === CONTAINER GRID === */
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 50px;
-    padding: 20px;
-    background-color: transparent;
-}
-.card {
-    background: linear-gradient(135deg, #116466, #1c4d40);
-    width:100%; /* Largeur fixe */
-    height: 100%; /* Hauteur fixe */
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-align: center;
-    padding: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #111827; /* Noir profond */
 }
 
+/* === MODERN CARD STYLE === */
+.card {
+    background-color: #1f2937; /* Gris foncé (bg-gray-800) */
+    color: white;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4); /* Lueur bleue */
 }
 
-.card img {
-    width: 40%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 10px;
+/* === COVER IMAGE === */
+.card img.cover {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    background-color: #000;
 }
 
-/* Titre et texte */
+/* === TEXT STYLING === */
 .card h2 {
-    font-size: 1.2em;
-    margin: 10px 0;
-    color: #333;
+    font-size: 1.25rem;
+    font-weight: 600;
 }
 
 .card p {
-    margin: 5px 0;
-    color: #1b0000;
+    margin: 0;
+    font-size: 0.95rem;
+    color: #d1d5db;
 }
 
-/* Boutons */
-.card button, .card select {
-    margin-top: 10px;
-    padding: 10px 15px;
+/* === BUTTONS === */
+.card button {
+    background: linear-gradient(to right, #2563eb, #3b82f6);
+    color: white;
     border: none;
-    border-radius: 5px;
-    background-color: #385e37;
-    color: rgb(198, 206, 113);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.2s;
+    transition: background 0.3s ease;
+    width: 100%;
+    font-size: 0.95rem;
+    font-weight: 500;
 }
 
 .card button:hover {
-    background-color: #278b6a;
+    background: linear-gradient(to right, #1d4ed8, #2563eb);
 }
 
+/* === SELECT DROPDOWN === */
 .card select {
     width: 100%;
-    margin-top: 10px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
 }
+
+/* === LIKE / DISLIKE ICONS === */
+.like-dislike-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+}
+
+.like-dislike-icons i {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.like-dislike-icons i:hover {
+    color: #3b82f6;
+}
+
+.like-dislike-icons .text-blue-500 {
+    color: #3b82f6 !important;
+}
+
+.like-dislike-icons .text-red-500 {
+    color: #ef4444 !important;
+}
+
 
 
 /* Style pour le lecteur de musique */
@@ -346,9 +383,9 @@ audio {
 .player {
     position: fixed;
     bottom: 0;
-    left: 100px; /* Laisse de l'espace pour le menu */
+    left: 78px; /* Laisse de l'espace pour le menu */
     width: calc(100% - 100px); /* Réduit la largeur pour éviter le chevauchement */
-    background: linear-gradient( #73b6a5, #29b48d);
+    background: linear-gradient(#2563eb, #1e40af);
     color: white;
     border-radius: 15px;
     text-align: center;
@@ -419,70 +456,96 @@ audio {
 
 /*style pour le formulaire d'ajout d'une musique dans la biblothéque*/
 .form-container {
-            width: 50%;
-            margin: auto;
-            padding: 20px;
-            background: rgb(45, 88, 138);
-            color: white;
-            border-radius: 15px;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
-            text-align: center;
+    width: 90%; /* Largeur par défaut */
+    max-width: 600px; /* Largeur maximale */
+    margin: auto;
+    padding: 1.5rem;
+    background: rgb(45, 88, 138);
+    color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    text-align: center;
         }
         .form-container input, .form-container button {
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
             border: none;
-            border-radius: 5px;
+            border-radius: 0.5rem;
         }
         .form-container button {
             background: rgb(36, 92, 194);
             color: white;
-            font-size: 18px;
+            font-size: 1rem;
             cursor: pointer;
-            transition:  0.3s;
+            transition: background-color 0.3s;
         }
         .form-container button:hover {
             background: rgb(33, 99, 173);
         }
 
-        /* Style pour le moteur de recherche */
-.search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin: 0;
-}
-
-.search-container input {
-    width: 200px;
-    padding: 10px;
-    margin:0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: all 0.3s ease;
-}
-
-.search-container input:focus {
-    border-color: #007BFF;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    outline: none;
-}
-
-.search-container input::placeholder {
-    color: #aaa;
-    font-style: italic;
-}
-
-.search-container select {
-    padding: 10px;
-    font-size: 16px;
-    margin-left: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
+        .search-container {
+            display: flex; /* Active Flexbox */
+            justify-content: flex-start; /* Aligne les éléments à gauche */
+            align-items: center; /* Centre les éléments verticalement */
+            gap: 10px; /* Espacement entre les éléments */
+            margin: 0; /* Supprime les marges */
+            padding: 10px; /* Ajoute un espacement interne */
+            position: fixed; /* Positionne le moteur de recherche de manière fixe */
+            top: 0; /* Aligne avec le haut de la page */
+            left: 80px; /* Colle le moteur de recherche au menu vertical */
+            width: calc(100% - 80px); /* Ajuste la largeur pour éviter le chevauchement avec le menu */
+            background-color: #1e3a8a; /* Ajoute un fond similaire au menu */
+            z-index: 1000; /* Assure que le moteur de recherche est au-dessus des autres éléments */
+            border-radius: 0 0 10px 10px; /* Ajoute des coins arrondis en bas */
+        }
+        
+        .search-container input {
+            width: 200px; /* Largeur par défaut */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-container input:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+        
+        .search-container input::placeholder {
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        .search-container select {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: auto; /* Ajuste automatiquement la largeur */
+        }
+        
+        @media (max-width: 768px) {
+            .search-container input,
+            .search-container select {
+                width: 100%; /* Prend toute la largeur disponible */
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .search-container {
+                flex-direction: column; /* Aligne les éléments verticalement */
+                gap: 15px; /* Augmente l'espacement entre les éléments */
+            }
+        
+            .search-container input,
+            .search-container select {
+                width: 100%; /* Prend toute la largeur disponible */
+            }
+        }
 
 .header {
     position: fixed;
@@ -541,4 +604,45 @@ audio {
     flex-direction: column;
     align-items: center;
 }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .vertical-menu {
+        width: 60px;
+    }
+
+    .card {
+        padding: 0.8rem;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .vertical-menu {
+        width: 50px;
+    }
+
+    .card {
+        padding: 0.5rem;
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 0.8rem;
+    }
+}
+
+
 

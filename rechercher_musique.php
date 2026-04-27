@@ -1,13 +1,8 @@
 <?php
 
 session_start();
+require_once 'config2.php'; // Connexion à la base de données
 
-// Connexion à la base de données
-$conn = new mysqli("localhost", "root", "", "musicdb");
-
-if ($conn->connect_error) {
-    die("Erreur de connexion : " . $conn->connect_error);
-}
 
 // Récupérer l'ID de l'utilisateur depuis la session
 $utilisateurId = $_SESSION['utilisateur_id'] ?? null;
@@ -94,13 +89,15 @@ $conn->close();
 <header class="header">
     
     <div class="add-music-container">
-        <a href="ajout_musique.php" class="add-music-btn">➕ </a>
+        
     </div>
     
     <div class="search-container">
+        <a href="ajout_musique.php" class="add-music-btn">➕ </a>
         <input type="text" id="searchTitle" placeholder="Rechercher par titre..." onkeyup="advancedFilterMusic()">
         <input type="text" id="searchArtist" placeholder="Rechercher par artiste..." onkeyup="advancedFilterMusic()">
         <input type="text" id="searchGenre" placeholder="Rechercher par genre..." onkeyup="advancedFilterMusic()">
+        
   
         <!-- Menu déroulant pour trier par likes -->
         <select id="sortByLikes" onchange="handleSortLikes()">
@@ -118,53 +115,8 @@ $conn->close();
     </div>
 </header>
 
-<nav class="vertical-menu">
-        
-        <ul>
-            <li>
-                <a href="connexion.html" class="menu1">
-                    <img src="images/connexion.png" alt="Page de connexion de CGDMusic">
-                    <span>Connexion</span>
-                </a>
-                
-            </li>
-            <ul>
-            <li>
-                <a href="profil.php" class="menu1">
-                    <img src="images/profil.png" alt="Page de connexion de CGDMusic">
-                    <span>Profil</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="index.html" class="menu2">
-                    <img src="images/accueil.png" alt="Page d'accueil de CGDMusic">
-                    <span>Accueil</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="playlist.php" class="menu3">
-                    <img src="images/playlist.png" alt="Page de playlists de CGDMusic">
-                    <span>Playlists</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="formulaire_abonnemnt.php" class="menu4">
-                    <img src="images/paiement-securise.png" alt="Page de téléchargement de CGDMusic">
-                    <span>Abonnement</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="logout.php" class="menu5">
-                    <img src="images/se-deconnecter.png" alt="Déconnexion">
-                    <span>Déconnexion</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+<?php include 'menu.php'; ?>
+
 <div class="container">
     <?php
     $conn = new mysqli("localhost", "root", "", "MusicDB");
@@ -228,6 +180,7 @@ if ($result->num_rows > 0) {
     ?>
 
     <?php foreach ($musicTracks as $index => $track): ?>
+        
         <div class="card">
             <img src="<?= htmlspecialchars($track['cover']) ?>" alt="<?= htmlspecialchars($track['title']) ?>" class="cover">
             <h2><?= htmlspecialchars($track['title']) ?></h2>
@@ -268,6 +221,7 @@ if ($result->num_rows > 0) {
             <source id="audioSource" src="" type="audio/mp3">
             Votre navigateur ne supporte pas l'audio.
         </audio>
+        
         <div class="player-controls">
             <button onclick="playPreviousTrack()">⏮️</button>
             <button onclick="playNextTrack()">⏭️</button>
@@ -279,7 +233,7 @@ if ($result->num_rows > 0) {
     const userAbonnement = "<?php echo $abonnement; ?>";
     const utilisateurId = "<?php echo $utilisateurId; ?>";
 </script>
-<script src="scripts_site.js"></script>
+<script src="musique.js"></script>
 
 </body>
 </html>

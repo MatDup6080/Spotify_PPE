@@ -18,18 +18,13 @@
 </head>
 <body>
     <div style="text-align: center; margin-top: 20px;">
-        <a href="index.html" class="btn-home">Retour vers l'accueil</a>
+        <button class="btn-home" onclick="window.location.href='index.html'">Retour vers l'acceuil</button>
     </div>
     <div class="container" id="container">
         <div class="form-container sign-up">
             <form id="signupForm" method="post" action="signup.php">
                
                 <h1>Crée un compte</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <span>ou utilisez votre email pour vous inscrire :</span>
                 <input type="text" name="name_u" placeholder="Nom" required>
                 <input type="text" name="surname" placeholder="Prénom" required>
                 <input type="email" id="mail" name="mail" placeholder="Email : example@mail.com" required>
@@ -44,11 +39,6 @@
             <form method="post" action="login.php" >
                
                 <h1>Connexion</h1>
-                <div class="social-icons">
-                    <a href="#" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
-                    <a href="#" class="icon"><i class="fa-brands fa-github"></i></a>
-                </div>
-                <span>utilisez email et mot de passe pour vous inscrire :</span>
                 <input type="email" name="mail" placeholder="Email : example@mail.com" required>
                 <input type="password" name="mdp" placeholder="Mot de passe" id="login-password" required>
                 <input type="checkbox" onclick="togglePassword('login-password')"> Afficher le mot de passe

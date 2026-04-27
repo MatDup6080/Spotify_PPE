@@ -1,11 +1,6 @@
 <?php
 session_start();
-
-// Connexion à la base de données
-$conn = new mysqli("localhost", "root", "", "MusicDB");
-if ($conn->connect_error) {
-    die(json_encode(['success' => false, 'message' => 'Erreur de connexion à la base de données.']));
-}
+require_once 'config2.php'; // Inclure le fichier de configuration pour la connexion à la base de données
 
 // Vérifier si l'utilisateur est connecté
 $utilisateurId = $_SESSION['utilisateur_id'] ?? null;

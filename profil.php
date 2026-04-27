@@ -1,12 +1,8 @@
 <?php
 session_start();
 
-// Connexion à la base de données
-$conn = new mysqli("localhost", "root", "", "musicdb");
+require_once 'config2.php';
 
-if ($conn->connect_error) {
-    die("Erreur de connexion : " . $conn->connect_error);
-}
 
 // Récupérer l'ID de l'utilisateur depuis la session
 $utilisateurId = $_SESSION['utilisateur_id'] ?? null;
@@ -48,57 +44,7 @@ $conn->close();
     <link rel="stylesheet" href="styles_home.css">
     <title>Profil | CGD Music</title>
 </head>
-<nav class="vertical-menu">
-      
-      <ul>
-          <li>
-              <a href="connexion.html" class="menu1">
-                  <img src="images/connexion.png" alt="Page de connexion de CGDMusic">
-                  <span>Connexion</span>
-              </a>
-              
-          </li>
-            <li>
-                <a href="index.html" class="menu2">
-                    <img src="images/accueil.png" alt="Page d'accueil de CGDMusic">
-                    <span>Accueil</span>
-                </a>
-          <li>
-              <a href="profil.php" class="menu1">
-                  <img src="images/profil.png" alt="Page de connexion de CGDMusic">
-                  <span>Profil</span>
-              </a>
-              
-          </li>
-          <li>
-              <a href="rechercher_musique.php" class="menu2">
-                  <img src="images/musique.png" alt="Page d'accueil de CGDMusic">
-                  <span>Bibliothéque Musique</span>
-              </a>
-              
-          </li>
-          <li>
-              <a href="playlist.php" class="menu3">
-                  <img src="images/playlist.png" alt="Page de playlists de CGDMusic">
-                  <span>Playlists</span>
-              </a>
-              
-          </li>
-          <li>
-              <a href="formulaire_abonnemnt.php" class="menu4">
-                  <img src="images/paiement-securise.png" alt="Page de téléchargement de CGDMusic">
-                  <span>Abonnement</span>
-              </a>
-              
-          </li>
-          <li>
-              <a href="logout.php" class="menu5">
-                  <img src="images/se-deconnecter.png" alt="Déconnexion">
-                  <span>Déconnexion</span>
-              </a>
-          </li>
-      </ul>
-  </nav>
+<?php include 'menu.php'; ?>
 <body>
     <div class="profile-container">
         <?php if ($user): ?>

@@ -1,66 +1,119 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil CGDMusic</title>
-    <link rel="stylesheet" href="styles_home.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CGDMusic – Écoute sans limite</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style_acc.css">
 </head>
 <body>
-    <!-- Menu de navigation -->
-    <nav class="vertical-menu">
-      
-        <ul>
-            <li>
-                <a href="connexion.html" class="menu1">
-                    <img src="images/connexion.png" alt="Page de connexion de CGDMusic">
-                    <span>Connexion</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="profil.php" class="menu1">
-                    <img src="images/profil.png" alt="Page de connexion de CGDMusic">
-                    <span>Profil</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="rechercher_musique.php" class="menu2">
-                    <img src="images/musique.png" alt="Page d'accueil de CGDMusic">
-                    <span>Bibliothéque Musique</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="playlist.php" class="menu3">
-                    <img src="images/playlist.png" alt="Page de playlists de CGDMusic">
-                    <span>Playlists</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="formulaire_abonnemnt.php" class="menu4">
-                    <img src="images/paiement-securise.png" alt="Page de téléchargement de CGDMusic">
-                    <span>Abonnement</span>
-                </a>
-                
-            </li>
-            <li>
-                <a href="logout.php" class="menu5">
-                    <img src="images/se-deconnecter.png" alt="Déconnexion">
-                    <span>Déconnexion</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
 
-    <!-- Contenu principal -->
-    <main>
-        <h1>BIENVENUE SUR CGDMusic</h1>
-        
-    </main>
-    <script src="scripts_site.js"></script>
+<header class="fade-section fade-1">
+  <h1>CGDMusic</h1>
+  <p>La meilleure expérience de streaming musical, partout avec toi.</p>
+  <a href="rechercher_musique.php"><button>Accéder au player</button></a>
+  <button class="btn-connexion" onclick="window.location.href='connexion.html'">Connexion</button>
+</header>
+
+<section class="features fade-section fade-2" id="features">
+  <h2>Fonctionnalités</h2>
+  <p>Profite d’une expérience inégalée avec CGDMusic, la plateforme qui révolutionne ton écoute.</p>
+  <div class="feature-grid">
+    <div class="feature-card fade-section fade-3">
+      <h3>Qualité audio HD</h3>
+      <p>Écoute ta musique préférée en qualité haute définition pour un son cristallin.</p>
+    </div>
+    <div class="feature-card fade-section fade-4">
+      <h3>Playlists personnalisées</h3>
+      <p>Des playlists créées spécialement pour toi selon tes goûts et tes humeurs.</p>
+    </div>
+    <div class="feature-card fade-section fade-5">
+      <h3>Écoute hors-ligne</h3>
+      <p>Télécharge tes morceaux favoris et écoute-les sans connexion internet.</p>
+    </div>
+  </div>
+</section>
+
+<section class="pricing fade-section fade-6" id="pricing">
+  <h2>Nos offres Premium</h2>
+  <p>Choisis l’offre qui te convient le mieux et profite de tous les avantages CGDMusic.</p>
+  <div class="pricing-grid">
+    <div class="pricing-card fade-section fade-7">
+      <h3>Free</h3>
+      <div class="price">0€ / mois</div>
+      <div class="desc">Accès avec publicité, qualité standard.</div>
+      <button class="btn-select" onclick="window.location.href='formulaire_abonnemnt'">S'abonner</button>
+    </div>
+    <div class="pricing-card fade-section fade-8">
+      <h3>Étudiant</h3>
+      <div class="price">5,50€ / mois</div>
+      <div class="desc">Tous les avantages Premium à prix réduit.</div>
+      <button class="btn-select" onclick="window.location.href='formulaire_abonnemnt'">S'abonner</button>
+    </div>
+    <div class="pricing-card fade-section fade-9">
+      <h3>Premium</h3>
+      <div class="price">10€ / mois</div>
+      <div class="desc">Écoute illimitée sans publicité, qualité HD.</div>
+      <button class="btn-select" onclick="window.location.href='formulaire_abonnemnt'">S'abonner</button>
+    </div>
+    <div class="pricing-card fade-section fade-10">
+      <h3>Duo</h3>
+      <div class="price">12,50€ / mois</div>
+      <div class="desc">Deux comptes Premium pour toi et un proche.</div>
+      <button class="btn-select" onclick="window.location.href='formulaire_abonnemnt'">S'abonner</button>
+    </div>
+    <div class="pricing-card fade-section fade-11">
+      <h3>Famille</h3>
+      <div class="price">15€ / mois</div>
+      <div class="desc">Jusqu’à 6 comptes Premium pour toute la famille.</div>
+      <button class="btn-select" onclick="window.location.href='formulaire_abonnemnt'">S'abonner</button>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials fade-section fade-12" id="testimonials">
+  <h2>Ce que disent nos utilisateurs</h2>
+  <div class="testimonial-grid">
+    <div class="testimonial-card fade-section fade-13">
+      <div class="stars">★★★★★</div>
+      <p>"CGDMusic a complètement changé ma manière d’écouter de la musique. La qualité est top et les playlists sont parfaites !"</p>
+      <div class="user-info">
+        <img class="avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Julie M." />
+        <div><strong>Julie M.</strong><br />Paris, France</div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-section fade-14">
+      <div class="stars">★★★★☆</div>
+      <p>"L’offre étudiant est imbattable. Je recommande à 100%."</p>
+      <div class="user-info">
+        <img class="avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Lucas T." />
+        <div><strong>Lucas T.</strong><br />Lyon, France</div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-section fade-15">
+      <div class="stars">★★★★★</div>
+      <p>"Enfin une plateforme qui comprend mes goûts musicaux."</p>
+      <div class="user-info">
+        <img class="avatar" src="https://randomuser.me/api/portraits/women/65.jpg" alt="Sarah L." />
+        <div><strong>Sarah L.</strong><br />Marseille, France</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer fade-section fade-16">
+  <div class="footer-content">
+    <p>&copy; 2025 CGDMusic. Tous droits réservés.</p>
+    <nav class="footer-nav">
+      <a href="#features">Fonctionnalités</a>
+      <a href="#pricing">Offres</a>
+      <a href="#testimonials">Avis</a>
+      <a href="#top">Haut de page</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="script_acceuil.js"></script>
 </body>
 </html>
